@@ -4,18 +4,18 @@ import ev3dev.ev3 as ev3
 from time import sleep
 
 # Motor for cage
-mC = ev3.MediumMotor('outC')
+mC = ev3.LargeMotor('outB')
 
 assert mC.connected, "Cage motor not connected"
 
 # === PARAMETERS ===
-RAISE_TIME = 1.0   # seconds — should match the lowering time, but tweak if needed
+RAISE_TIME = 2.0   # seconds — should match the lowering time, but tweak if needed
 
 print("Raising cage...")
 ev3.Sound.beep()
 
 # Run the cage motor upward
-mC.run_forever(speed_sp=200)
+mC.run_forever(speed_sp=-100)
 sleep(RAISE_TIME)
 mC.stop(stop_action="hold")
 
